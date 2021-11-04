@@ -31,8 +31,13 @@ export default {
     };
   },
   mounted() {
-    this.todos = JSON.parse(localStorage.getItem("todos"));
-    this.$toast.show(`Welcome back!`);
+    this.todos = JSON.parse(localStorage.getItem("todos"))
+      ? JSON.parse(localStorage.getItem("todos"))
+      : [];
+    this.todos.length
+      ? this.$toast.show(`Welcome back!`)
+      : this.$toast.show(`Welcome!`);
+    console.log(this.todos);
   },
   methods: {
     newTodo(todoName) {
@@ -41,11 +46,11 @@ export default {
         isDone: false,
       });
       this.saveToLocalStorage();
-      this.$toast.success(`Place ${todoName} to your beautiful day!`);
+      this.$toast.success(`Place '${todoName}' to your beautiful day!`);
     },
     removeTodo(index) {
       this.$toast.error(
-        `You just remove ${this.todos[index].activity} from your beautiful day!`
+        `You just remove '${this.todos[index].activity}' from your beautiful day!`
       );
       this.todos.splice(index, 1);
       this.saveToLocalStorage();
@@ -61,15 +66,13 @@ export default {
   },
   computed: {
     computedTodos() {
-      if (this.todos.length) {
-        for (let i = 0; i < this.todos.length; i++) {
-          if (this.todos[i].isDone) {
-            this.todos.push(this.todos[i]);
-            this.todos.splice(i, 1);
-          }
+      for (let i = 0; i < this.todos.length; i++) {
+        if (this.todos[i].isDone) {
+          this.todos.push(this.todos[i]);
+          this.todos.splice(i, 1);
         }
-        return this.todos;
       }
+      return this.todos;
     },
   },
 };
