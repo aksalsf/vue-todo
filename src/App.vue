@@ -37,7 +37,6 @@ export default {
     this.todos.length
       ? this.$toast.show(`Welcome back!`)
       : this.$toast.show(`Welcome!`);
-    console.log(this.todos);
   },
   methods: {
     newTodo(todoName) {

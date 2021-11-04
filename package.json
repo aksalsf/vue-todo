@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "git-deploy": "ga dist -f && gcmsg 'deploy dist to gh-pages' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
