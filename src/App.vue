@@ -32,6 +32,7 @@ export default {
   },
   mounted() {
     this.todos = JSON.parse(localStorage.getItem("todos"));
+    this.$toast.info(`Welcome back bro!`);
   },
   methods: {
     newTodo(todoName) {
