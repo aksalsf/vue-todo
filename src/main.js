@@ -15,6 +15,7 @@ const app = createApp(App);
 app.use(Toaster, {
   position: "top",
   queue: true,
+  duration: 3 * 1000,
 });
 
 app.component("fa", FontAwesomeIcon);
