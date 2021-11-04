@@ -13,7 +13,7 @@ library.add(faTrash, faCheck);
 const app = createApp(App);
 
 app.use(Toaster, {
-  position: "top-right",
+  position: "top",
 });
 
 app.component("fa", FontAwesomeIcon);
